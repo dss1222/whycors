@@ -31,7 +31,7 @@ public class MemberService {
         }
         String password = passwordEncoder.encode(requestDto.getPassword());
 
-        Member member = new Member(requestDto.getUsername(), password, requestDto.getNickname());
+        Member member = new Member(requestDto, password);
         memberRepository.save(member);
     }
 }

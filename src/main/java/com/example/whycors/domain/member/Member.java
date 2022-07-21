@@ -1,5 +1,6 @@
 package com.example.whycors.domain.member;
 
+import com.example.whycors.domain.member.dto.SignupRequestDto;
 import com.example.whycors.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,15 +27,29 @@ public class Member {
     @Column(name = "nickname", nullable = false, unique = true)
     private String nickname;
 
+    @Column(name = "profileImageUrl", unique = true)
+    private String profileImageUrl;
+
+    @Column(name = "phoneNumber", unique = true)
+    private String phoneNumber;
+
+    @Column(name = "gender", unique = true)
+    private String gender;
+
+
+
     @Column
     @Enumerated(value = EnumType.STRING) // 정보를 받을 때는 Enum 값으로 받지만
     private UserRole role;
 
-    public Member(String username, String password, String nickname) {
-        this.username = username;
+    public Member(SignupRequestDto requestDto, String password) {
+        this.username = requestDto.getUsername();
         this.password = password;
-        this.nickname = nickname;
+        this.nickname = requestDto.getNickname();
         this.role = UserRole.USER;
+        this.profileImageUrl = null;
+        this.phoneNumber = requestDto.getPhoneNumber();
+        this.gender = requestDto.getGender();
     }
 
 }

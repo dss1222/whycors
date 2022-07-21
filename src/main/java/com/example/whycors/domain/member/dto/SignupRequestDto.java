@@ -17,4 +17,10 @@ public class SignupRequestDto {
 
     @NotBlank(message = "닉네임을 입력해주세요.")
     public String nickname;
+
+    @NotBlank(message = "핸드폰 번호를 입력해주세요.")
+    public String phoneNumber;
+
+    @NotBlank(message = "성별을 입력해주세요.")
+    public String gender;
 }
