@@ -29,4 +29,9 @@ public class MemberController {
         return new MemberResponseDto(userDetails.getUser());
     }
 
+    @GetMapping("/ping")
+    public String Check() {
+        return "pong";
+    }
+
 }
